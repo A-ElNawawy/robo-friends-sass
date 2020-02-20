@@ -2,7 +2,7 @@ import React,{ Component } from 'react';
 import './App.css';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
-import { users } from '../database/users-big';
+// import { users } from '../database/users-big';
 
 class App extends Component {
   constructor() {
@@ -27,20 +27,21 @@ class App extends Component {
 
 /* to call users from local database */
 
-
+/* 
   componentDidMount() {
     this.setState({ robots: users })
   }
 
-
+ */
 /* to call users from remote big database */
-/* 
+
   componentDidMount() {
-    fetch('https://my-json-server.typicode.com/A-ElNawawy/db')
+    fetch('https://swapi.co/api/people/1')
     .then(response => response.json())
-    .then(users => this.setState({ robots: users }))
+    .then(users => this.setState({ robots: users }));
+
   }
-*/
+
 /* ============================================================= */
 
   onSearchChange = event => {
@@ -51,6 +52,7 @@ class App extends Component {
     const filteredRobots = this.state.robots.filter(robot => {
       return robot.NameEn.toLowerCase().includes(this.state.searchField.toLowerCase());
     })
+    // console.log(this.state.robots);
     if ( this.state.robots.length === 0 ) {
       return(
         <div>
